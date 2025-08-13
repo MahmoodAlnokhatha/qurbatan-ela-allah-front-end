@@ -1,0 +1,5 @@
+.nf { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
+.nf__title { margin: 0; font-size: 4rem; line-height: 1; }
+.nf__text { color: #475569; margin: 0.5rem 0 1rem; }
+.nf__link { display: inline-block; text-decoration: none; background: #111827; color: #fff; padding: 0.5rem 0.8rem; border-radius: 10px; border: 1px solid #0b1220; }
+.nf__link:hover { background: #0b1220; }

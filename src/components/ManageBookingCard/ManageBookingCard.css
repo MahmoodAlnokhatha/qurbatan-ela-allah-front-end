@@ -1,0 +1,15 @@
+.mBkCard { display: grid; grid-template-rows: auto 1fr; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #fff; }
+.mBkCard__media { aspect-ratio: 16/9; background: #f1f5f9; }
+.mBkCard__media img { width: 100%; height: 100%; object-fit: cover; }
+.mBkCard__placeholder { width: 100%; height: 100%; background: #e2e8f0; }
+.mBkCard__body { padding: 0.75rem; display: grid; gap: 6px; }
+.mBkCard__header { display: flex; justify-content: space-between; align-items: center; }
+.mBkCard__dates { font-size: 0.95rem; color: #475569; }
+.mBkCard__status { padding: 0.2rem 0.5rem; border-radius: 999px; font-size: 0.82rem; text-transform: capitalize; }
+.mBkCard__status--pending { background: #fef3c7; color: #92400e; }
+.mBkCard__status--approved { background: #dcfce7; color: #166534; }
+.mBkCard__status--rejected { background: #fee2e2; color: #991b1b; }
+.mBkCard__actions { display: flex; gap: 0.5rem; }
+.mBkCard__btn { flex: 1; border: none; padding: 0.4rem 0.6rem; font-size: 0.9rem; border-radius: 6px; cursor: pointer; }
+.mBkCard__btn--approve { background: #22c55e; color: white; }
+.mBkCard__btn--reject { background: #ef4444; color: white; }

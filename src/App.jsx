@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import SignIn from './pages/Auth/SignIn';
+import SignUp from './pages/Auth/SignUp';
+import Vehicles from './pages/Vehicles/Vehicles';
+import VehicleDetails from './pages/VehicleDetails/VehicleDetails';
+import MyBookings from './pages/MyBookings/MyBookings';
+import ManageBookings from './pages/ManageBookings/ManageBookings';
+import MyVehicles from './pages/MyVehicles/MyVehicles';
+import NewVehicle from './pages/Vehicles/NewVehicle';
+import EditVehicle from './pages/Vehicles/EditVehicle';
+import Dashboard from './pages/Dashboard/Dashboard';
+import NotFound from './pages/NotFound/NotFound';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Vehicles />} />
+        <Route path="/vehicles/new" element={<NewVehicle />} />
+        <Route path="/vehicles/:id" element={<VehicleDetails />} />
+        <Route path="/vehicles/:id/edit" element={<EditVehicle />} />
+        <Route path="/my-vehicles" element={<MyVehicles />} />
+        <Route path="/bookings/my" element={<MyBookings />} />
+        <Route path="/bookings/manage" element={<ManageBookings />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
-  )
+  );
 }
-
-export default App
