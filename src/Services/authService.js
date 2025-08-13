@@ -1,6 +1,5 @@
-import axios from "axios";
+import http from './http';
 
-const API_URL = "http://localhost:5000"; // بعدلة على الباكند
-
-export const signup = (data) => axios.post(`${API_URL}/signup`, data);
-export const login = (data) => axios.post(`${API_URL}/login`, data);
+export const signup = (data) => http.post('/auth/sign-up', data);
+export const login  = (data) => http.post('/auth/sign-in', data);
+export const verify = () => http.get('/auth/verify');
