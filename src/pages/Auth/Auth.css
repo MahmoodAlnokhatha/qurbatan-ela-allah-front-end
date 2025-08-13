@@ -1,0 +1,11 @@
+.auth { max-width: 420px; margin: 0 auto; padding: 1.25rem 1rem; }
+.auth__title { margin: 0 0 0.75rem 0; font-size: 1.6rem; }
+.auth__form { display: grid; gap: 12px; }
+.auth__form label { display: grid; gap: 6px; font-size: 0.96rem; color: #334155; }
+.auth__form input { padding: 0.55rem 0.7rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem; }
+.auth__btn { background: #111827; color: #fff; border: 1px solid #0b1220; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 1rem; cursor: pointer; }
+.auth__btn:hover { background: #0b1220; }
+.auth__error { color: #b91c1c; margin: 0.25rem 0 0.5rem 0; }
+.auth__hint { color: #475569; font-size: 0.95rem; margin: 0.3rem 0 0; }
+.auth__hint a { color: #0ea5e9; text-decoration: none; }
+.auth__hint a:hover { text-decoration: underline; }

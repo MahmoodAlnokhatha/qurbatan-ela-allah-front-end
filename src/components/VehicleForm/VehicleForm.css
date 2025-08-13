@@ -1,0 +1,19 @@
+.vehForm { width: 100%; }
+.vehForm__grid { display: grid; grid-template-columns: 1fr 380px; gap: 18px; }
+.vehForm__left { display: grid; gap: 12px; }
+.vehForm__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.vehForm__field { display: grid; gap: 6px; }
+.vehForm__field label { font-size: 0.95rem; color: #334155; }
+.vehForm__field input[type="text"], .vehForm__field input[type="date"], .vehForm__field input[type="file"] {
+  padding: 0.55rem 0.7rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem;
+}
+.vehForm__help { margin: 4px 0 0; font-size: 0.88rem; color: #64748b; }
+.vehForm__error { color: #b91c1c; }
+.vehForm__actions { display: flex; gap: 10px; margin-top: 2px; }
+.vehForm__submit { background: #111827; color: #fff; border: 1px solid #0b1220; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 1rem; cursor: pointer; }
+.vehForm__submit:hover { background: #0b1220; }
+.vehForm__preview { aspect-ratio: 16/9; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #f8fafc; }
+.vehForm__preview img { width: 100%; height: 100%; object-fit: cover; }
+.vehForm__placeholder { width: 100%; height: 100%; display: grid; place-items: center; color: #64748b; font-size: 0.95rem; }
+@media (max-width: 900px) { .vehForm__grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .vehForm__row { grid-template-columns: 1fr; } }

@@ -1,0 +1,5 @@
+.errBox { display: inline-flex; align-items: center; gap: 10px; background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; padding: 0.55rem 0.75rem; border-radius: 10px; }
+.errBox__icon { display: inline-grid; place-items: center; width: 22px; height: 22px; background: #991b1b; color: #fff; border-radius: 999px; font-weight: 700; font-size: 0.85rem; line-height: 1; }
+.errBox__msg { font-size: 0.95rem; }
+.errBox__retry { margin-left: 6px; border: 1px solid #991b1b; background: transparent; color: #991b1b; border-radius: 8px; padding: 0.25rem 0.5rem; cursor: pointer; }
+.errBox__retry:hover { background: #fecaca; }
