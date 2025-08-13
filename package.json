@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "prneview": "vite preview"
   },
   "dependencies": {
     "dayjs": "^1.11.13",
