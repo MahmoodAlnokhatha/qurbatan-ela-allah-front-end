@@ -18,3 +18,9 @@
   padding: 0.45rem 0.7rem; border-radius: 10px;
   border: 1px solid #0b1220; width: max-content;
 }
+
+.vehCard__owner {
+  opacity: 0.85;
+  font-size: 0.9rem;
+  margin: 2px 0;
+}

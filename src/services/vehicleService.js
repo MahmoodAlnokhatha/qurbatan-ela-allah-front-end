@@ -11,6 +11,17 @@ const show = async (vehicleId) => {
     return res.json();
   } catch (err) { console.log(err); }
 };
+// START OF VALIDATION OF DATE BOOKING
+
+const availability = async (vehicleId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${vehicleId}/availability`);
+    return res.json();
+  } catch (err) { console.log(err); }
+};
+
+
+// END OF VALIDATION
 const myVehicles = async () => {
   try {
     const res = await fetch(`${BASE_URL}/my-vehicles`, {
@@ -58,4 +69,5 @@ const remove = async (vehicleId) => {
     return res.json();
   } catch (err) { console.log(err); }
 };
-export { index, show, myVehicles, create, update, remove };
+// ADDED FOR DATE VALIDATION
+export { index, show, myVehicles, create, update, remove, availability };

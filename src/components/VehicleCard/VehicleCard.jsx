@@ -12,6 +12,7 @@ export default function VehicleCard({ vehicle }) {
       </div>
       <div className="vehCard__body">
         <h3 className="vehCard__title">{vehicle.location}</h3>
+        <p className="vehCard__owner">Owner: {vehicle?.owner?.username ?? '—'}</p>
         <p className="vehCard__dates">{start} → {end}</p>
         <Link className="vehCard__btn" to={`/vehicles/${vehicle._id}`}>View</Link>
       </div>
