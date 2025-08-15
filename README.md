@@ -31,13 +31,12 @@ Via Render, check it our [click here](https://qurbatan-ela-allah-front-end.onren
 
 ---
 
-## 🗂️ Repository Structure (suggested)
+## 🗂️ Repository Structure 
 
 ```
 qurbatan-ela-allah/
 ├─ backend/              # Express API (auth, vehicles, bookings, push)
 ├─ frontend/             # React app (screens, services, SW, assets)
-└─ README.md
 ```
 
 > Two developers conriputed the project for both repos
@@ -92,5 +91,5 @@ qurbatan-ela-allah/
 ---
 
 ## Future Enhancments 
-PRs and issues are welcome! Suggested areas: maps integration, richer PWA, admin dashboard, in-app messaging, trust & safety.
+maps integration, richer PWA, admin dashboard, in-app messaging, trust & safety policy.
 
