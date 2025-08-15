@@ -5,23 +5,23 @@ import * as bookingService from '../../services/bookingService';
 import { UserContext } from '../../contexts/UserContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { useToast } from '../../components/Toast/ToastProvider';
 import './VehicleDetails.css';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from 'dayjs';
 
-
 export default function VehicleDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
+  const toast = useToast();
 
   const [vehicle, setVehicle] = useState(null);
   const [startDate, setStartDate] = useState(null); 
   const [endDate, setEndDate] = useState(null);     
   const [availWindow, setAvailWindow] = useState(null); 
-  const [busy, setBusy] = useState([]); //
-
+  const [busy, setBusy] = useState([]);
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');
 
@@ -39,48 +39,47 @@ export default function VehicleDetails() {
   };
 
   useEffect(() => { load(); }, [id]);
-useEffect(() => {
-  (async () => {
-    try {
-      const data = await vehicleService.availability(id);
-      if (data?.availability) {
-        setAvailWindow({
-          start: new Date(data.availability.startDate),
-          end: new Date(data.availability.endDate),
-        });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await vehicleService.availability(id);
+        if (data?.availability) {
+          setAvailWindow({
+            start: new Date(data.availability.startDate),
+            end: new Date(data.availability.endDate),
+          });
+        }
+        if (data?.bookings?.length) {
+          setBusy(
+            data.bookings.map(b => ({
+              start: dayjs(b.startDate).startOf('day').toDate(),
+              end: dayjs(b.endDate).endOf('day').toDate(),
+            }))
+          );
+        } else {
+          setBusy([]);
+        }
+      } catch (e) {
       }
-      if (data?.bookings?.length) {
-        setBusy(
-          data.bookings.map(b => ({
-            start: dayjs(b.startDate).startOf('day').toDate(),
-            end: dayjs(b.endDate).endOf('day').toDate(),
-          }))
-        );
-      } else {
-        setBusy([]);
-      }
-    } catch (e) {
-    
-    }
-  })();
-}, [id]);
+    })();
+  }, [id]);
 
   const handleBooking = async (e) => {
     e.preventDefault();
     if (!user) { navigate('/sign-in'); return; }
     try {
       const payload = {
-  vehicleId: id,
-  startDate: dayjs(startDate).format('YYYY-MM-DD'),
-  endDate: dayjs(endDate).format('YYYY-MM-DD'),
-};
-const res = await bookingService.create(payload);
-
+        vehicleId: id,
+        startDate: dayjs(startDate).format('YYYY-MM-DD'),
+        endDate: dayjs(endDate).format('YYYY-MM-DD'),
+      };
+      const res = await bookingService.create(payload);
       if (res?.err) throw new Error(res.err);
-      alert('Booking request submitted!');
+      toast.show('Booking request submitted!', { type: 'success' });
       navigate('/bookings/my');
     } catch (err) {
-      alert(err.message || 'Failed to create booking.');
+      toast.show(err.message || 'Failed to create booking.', { type: 'error' });
     }
   };
 
@@ -121,7 +120,7 @@ const res = await bookingService.create(payload);
                 required/>
             </label>
             <label>
-             <DatePicker
+              <DatePicker
                 selected={endDate}
                 onChange={setEndDate}
                 selectsEnd

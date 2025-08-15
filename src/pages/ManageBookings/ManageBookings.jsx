@@ -3,12 +3,14 @@ import * as bookingService from '../../services/bookingService';
 import ManageBookingCard from '../../components/ManageBookingCard/ManageBookingCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { useToast } from '../../components/Toast/ToastProvider';
 import './ManageBookings.css';
 
 export default function ManageBookings() {
   const [bookings, setBookings] = useState([]);
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');
+  const toast = useToast();
 
   const fetchBookings = async () => {
     setStatus('loading');
@@ -28,8 +30,9 @@ export default function ManageBookings() {
       const res = await bookingService.updateStatus(id, newStatus);
       if (res?.err) throw new Error(res.err);
       setBookings(prev => prev.map(b => (b._id === id ? { ...b, status: newStatus } : b)));
+      toast.show(`Booking ${newStatus}.`, { type: 'success' });
     } catch (e) {
-      alert('Failed to update status.');
+      toast.show(e.message || 'Failed to update status.', { type: 'error' });
     }
   };
 
